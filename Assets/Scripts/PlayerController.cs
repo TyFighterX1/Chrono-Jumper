@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject failFX;
+    public Transform playerpos;
+    public GameManager gm;
+
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -14,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
     // Update is called once per frame
@@ -51,5 +55,19 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(onGround.position, 0.2f, groundLayer);
+    }
+    public void Die()  //for whenever the player loses
+    {
+        gm.OnDeath();
+        Instantiate(failFX, playerpos.position, Quaternion.Euler(0, 180, 0));
+        Destroy(gameObject);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            Die();
+        }
     }
 }

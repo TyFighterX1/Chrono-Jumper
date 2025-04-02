@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EyeBlastControler : MonoBehaviour
 {
-    public float blastSpeed = 20f;
+    public float blastSpeed = 10f;
 
     private Rigidbody2D rb;
     private Vector2 direction;
