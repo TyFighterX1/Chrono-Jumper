@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         hitBox = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         standingBox = hitBox.size;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
