@@ -7,18 +7,25 @@ public class PlayerController : MonoBehaviour
     public GameObject failFX;
     public Transform playerpos;
     public GameManager gm;
+    public CapsuleCollider2D hitBox;
+    public Vector2 standingBox;
+    public Vector2 crouchingBox;
+    public Animator anim;
 
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    
     [SerializeField]private Rigidbody2D rb;
     [SerializeField] private Transform onGround;
     [SerializeField] private LayerMask groundLayer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitBox = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
+        standingBox = hitBox.size;
     }
 
     // Update is called once per frame
@@ -33,6 +40,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) //checks to see if the button is held down so that player can jump higher
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        if(Input.GetKeyDown(KeyCode.S)) // crouching
+        {
+            hitBox.size = crouchingBox;
+        }
+
+        if(Input.GetKeyUp(KeyCode.S)) // not crouching
+        {
+            hitBox.size = standingBox;
         }
 
         FlipPlayer();
@@ -69,5 +86,22 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+        else if (collision.gameObject.CompareTag("Lava"))
+        {
+            Die();
+        }
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
+        else if (collision.gameObject.CompareTag("EyeBat"))
+        {
+            Die();
+        }
+        
     }
 }
