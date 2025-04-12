@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 257341092}
   - component: {fileID: 257341095}
   - component: {fileID: 257341096}
+  - component: {fileID: 257341097}
   m_Layer: 0
   m_Name: EyeBat
   m_TagString: EyeBat
@@ -1192,6 +1193,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyeBlast: {fileID: 844837240532282889, guid: 008f53653c4557544800533c275c6aec, type: 3}
   blastPos: {fileID: 321730442}
+--- !u!50 &257341097
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257341091}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &321730441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2935,7 @@ GameObject:
   m_Layer: 0
   m_Name: LizardSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
