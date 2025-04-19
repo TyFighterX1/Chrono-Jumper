@@ -6,12 +6,13 @@ public class EyeBatController : MonoBehaviour
 {
     public GameObject eyeBlast;
     public Transform blastPos;
+    public GameManager gm;
 
     private float timer;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EyeBlast", 5, 5);
+        InvokeRepeating("EyeBlast", 5 / gm.diffMod, 5 / gm.diffMod);
     }
 
     // Update is called once per frame

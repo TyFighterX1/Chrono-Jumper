@@ -5,19 +5,19 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class LizardController : MonoBehaviour
 {
-    private int facing = -1;
-    private SpriteRenderer rend;
+    public GameManager gm;
+    
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<SpriteRenderer>();
-        Invoke("Die", 20f);
+        
+        Invoke("Die", 60f);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x - 1 * facing, transform.position.y), Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x + 1 *gm.diffMod, transform.position.y), Time.deltaTime);
     }
 
     

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float diffMod; 
     void Awake()
     {
         
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetDifficulty();
     }
 
     // Update is called once per frame
@@ -23,10 +24,15 @@ public class GameManager : MonoBehaviour
     void Lose()
     {
         Debug.Log("World Resetting");
-        SceneManager.LoadScene("testscene");
+        SceneManager.LoadScene("Main Level");
     }
     public void OnDeath()
     {
         Invoke("Lose", 2);
+    }
+    void SetDifficulty()
+    {
+        diffMod = PlayerPrefs.GetFloat("diffMod");
+        Debug.Log(diffMod);
     }
 }
