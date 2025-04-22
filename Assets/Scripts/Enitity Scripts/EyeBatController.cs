@@ -12,7 +12,7 @@ public class EyeBatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EyeBlast", 5 / gm.diffMod, 5 / gm.diffMod);
+        InvokeRepeating("EyeBlast", 5, 5);
     }
 
     // Update is called once per frame

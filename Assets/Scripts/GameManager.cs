@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     void Lose()
     {
         Debug.Log("World Resetting");
-        SceneManager.LoadScene("Main Level");
+        SceneManager.LoadScene("DeathMenu");
     }
     public void OnDeath()
     {
@@ -34,5 +34,9 @@ public class GameManager : MonoBehaviour
     {
         diffMod = PlayerPrefs.GetFloat("diffMod");
         Debug.Log(diffMod);
+    }
+    public void Win()
+    {
+        SceneManager.LoadScene("WinScene");
     }
 }

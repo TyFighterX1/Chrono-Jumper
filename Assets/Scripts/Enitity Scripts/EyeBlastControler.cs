@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EyeBlastControler : MonoBehaviour
 {
-    public float blastSpeed = 10f;
-    public GameManager gm;
+    public float blastSpeed = 7f;
+    
 
     private Rigidbody2D rb;
     private Vector2 direction;
@@ -13,9 +13,10 @@ public class EyeBlastControler : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+       
         direction = Vector2.left;
         rb.velocity = blastSpeed * direction;
-        Invoke("DestroyBlast", 5 / gm.diffMod);
+        Invoke("DestroyBlast", 5);
     }
     void DestroyBlast()
     {

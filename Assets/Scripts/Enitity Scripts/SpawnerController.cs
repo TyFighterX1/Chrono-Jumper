@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    public GameManager gm;
+    
     public GameObject lizard;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnLizard", 5 / gm.diffMod, 5 / gm.diffMod);
+        InvokeRepeating("SpawnLizard", 5, 5);
     }
 
     void SpawnLizard()

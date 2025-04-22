@@ -1193,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyeBlast: {fileID: 844837240532282889, guid: 008f53653c4557544800533c275c6aec, type: 3}
   blastPos: {fileID: 321730442}
+  gm: {fileID: 0}
 --- !u!50 &257341097
 Rigidbody2D:
   serializedVersion: 4
@@ -1783,6 +1784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e043a72d453ce3c42919236f8ad63564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diffMod: 0
 --- !u!4 &585280385
 Transform:
   m_ObjectHideFlags: 0

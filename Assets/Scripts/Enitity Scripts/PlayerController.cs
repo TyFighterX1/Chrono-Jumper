@@ -77,9 +77,14 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
-        else if(collision.gameObject.CompareTag("Ghost"))
+        else if (collision.gameObject.CompareTag("Ghost"))
         {
             Die();
+        }
+        else if (collision.gameObject.CompareTag("Ending"))
+        {
+            gm.Win();
+            Debug.Log("Win hit");
         }
 
     }
@@ -94,5 +99,6 @@ public class PlayerController : MonoBehaviour
             Die();
         }
         
+
     }
 }
