@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ButtonController : MonoBehaviour
 {
+    [SerializeField] private AudioSource buttonSFX;
     public void ChangeScreen(string sceneName) //lets you change scenes 
     {
         SceneManager.LoadScene(sceneName);
@@ -21,5 +22,6 @@ public class ButtonController : MonoBehaviour
         PlayerPrefs.SetFloat("diffMod", diffMod);
         PlayerPrefs.Save();
         Debug.Log(PlayerPrefs.GetFloat("diffMod"));
+        buttonSFX.Play();
     }
 }

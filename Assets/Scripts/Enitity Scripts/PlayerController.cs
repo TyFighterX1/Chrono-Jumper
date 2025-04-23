@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private Rigidbody2D rb;
     [SerializeField] private Transform onGround;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioSource jumpSFX;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded()) //checks to see if player is on ground so they can jump
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            jumpSFX.Play();
         }
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f) //checks to see if the button is held down so that player can jump higher
         {

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float diffMod; 
+    public float diffMod;
+    [SerializeField] private AudioSource deathSFX;
     void Awake()
     {
         
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnDeath()
     {
+        deathSFX.Play();
         Invoke("Lose", 2);
     }
     void SetDifficulty()
