@@ -7,7 +7,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private AudioSource buttonSFX;
     public void ChangeScreen(string sceneName) //lets you change scenes 
     {
-        PlayerPrefs.SetInt("Checkpoint", 0); //if you leave progress shouldnt carry over
+       
         SceneManager.LoadScene(sceneName);
     }
 
