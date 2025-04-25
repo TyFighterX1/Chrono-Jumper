@@ -6,15 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float diffMod;
+    public int checkpointChecker;
     [SerializeField] private AudioSource deathSFX;
-    void Awake()
-    {
-        
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        SetDifficulty();
+        SetDifficulty(); //sets difficulty
+        CheckpointSet(); //checks for checkpoint status
     }
 
     // Update is called once per frame
@@ -34,11 +33,17 @@ public class GameManager : MonoBehaviour
     }
     void SetDifficulty()
     {
-        diffMod = PlayerPrefs.GetFloat("diffMod");
+        diffMod = PlayerPrefs.GetFloat("diffMod"); 
         Debug.Log(diffMod);
+    }
+
+    public void CheckpointSet()
+    {
+        checkpointChecker = PlayerPrefs.GetInt("Checkpoint");
     }
     public void Win()
     {
+
         SceneManager.LoadScene("WinScene");
     }
 }

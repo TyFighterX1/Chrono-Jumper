@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public GameObject failFX;
     public Transform playerpos;
     public GameManager gm;
- 
+    public TimerManager tm;
     public Animator anim;
 
     
@@ -16,18 +16,25 @@ public class PlayerController : MonoBehaviour
     
     
     
+    
     [SerializeField]private Rigidbody2D rb;
     [SerializeField] private Transform onGround;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioSource jumpSFX;
-    
+    [SerializeField] private AudioSource checkpointSFX;
+
     // Start is called before the first frame update
     void Start()
     {
         
         anim = GetComponent<Animator>();
-        
         rb = GetComponent<Rigidbody2D>();
+
+        Debug.Log(gm.checkpointChecker);
+        if (gm.checkpointChecker == 1)
+        {
+            transform.position = new Vector2(174f,-8f);//sends player to checkpoint
+        }
     }
 
     // Update is called once per frame
@@ -52,10 +59,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         
-            rb.velocity = new Vector2( 1 * speed *gm.diffMod, rb.velocity.y);
+            rb.velocity = new Vector2( 1 * speed *gm.diffMod, rb.velocity.y); //auto-run
         
             
-        
     }
 
    
@@ -74,18 +80,31 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            PlayerPrefs.SetFloat("CurrentTime", tm.remainingTime);
             Die();
         }
         else if (collision.gameObject.CompareTag("Lava"))
         {
+            PlayerPrefs.SetFloat("CurrentTime", tm.remainingTime);
             Die();
         }
         else if (collision.gameObject.CompareTag("Ghost"))
         {
+            PlayerPrefs.SetFloat("CurrentTime", tm.remainingTime);
             Die();
+        }
+        else if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            PlayerPrefs.SetInt("Checkpoint", 1); //enables checkpoint
+            PlayerPrefs.Save();
+            checkpointSFX.Play();
+            Debug.Log("Checkpoint Hit");
         }
         else if (collision.gameObject.CompareTag("Ending"))
         {
+            PlayerPrefs.SetInt("Checkpoint", 0); //resets checkpoint
+            PlayerPrefs.SetFloat("CurrentTime", 300f); //resets time
+            PlayerPrefs.Save();
             gm.Win();
             Debug.Log("Win hit");
         }
@@ -95,10 +114,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            PlayerPrefs.SetFloat("CurrentTime", tm.remainingTime);
             Die();
         }
         else if (collision.gameObject.CompareTag("EyeBat"))
         {
+            PlayerPrefs.SetFloat("CurrentTime", tm.remainingTime);
             Die();
         }
         

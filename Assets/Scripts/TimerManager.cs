@@ -6,10 +6,14 @@ using UnityEngine;
 public class TimerManager : MonoBehaviour
 {
     public PlayerController pc;
+    public float remainingTime;
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
     private bool playerDead = false;
 
+    void Start()
+    {
+        remainingTime = PlayerPrefs.GetFloat("CurrentTime");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +24,9 @@ public class TimerManager : MonoBehaviour
             remainingTime = 0;
             if (playerDead == false) //checks to kill the player and if it is true the player is already dead and this should not call.
             {
+                PlayerPrefs.SetFloat("CurrentTime", 300f); // resets time
+                PlayerPrefs.SetInt("Checkpoint", 0); //resets checkpoint
+                PlayerPrefs.Save();
                 pc.Die();
                 playerDead = true;
             }

@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Ghost
   - Ending
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
