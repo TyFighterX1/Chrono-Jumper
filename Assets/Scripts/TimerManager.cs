@@ -12,7 +12,7 @@ public class TimerManager : MonoBehaviour
 
     void Start()
     {
-        remainingTime = PlayerPrefs.GetFloat("CurrentTime");
+        remainingTime = PlayerPrefs.GetFloat("CurrentTime"); //sets the time
     }
     // Update is called once per frame
     void Update()

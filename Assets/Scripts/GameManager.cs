@@ -21,27 +21,27 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    void Lose()
+    void Lose() // when player loses
     {
         Debug.Log("World Resetting");
         SceneManager.LoadScene("DeathMenu");
     }
-    public void OnDeath()
+    public void OnDeath() // delays when screen changes
     {
         deathSFX.Play();
         Invoke("Lose", 2);
     }
-    void SetDifficulty()
+    void SetDifficulty() // sets difficulty on load
     {
         diffMod = PlayerPrefs.GetFloat("diffMod"); 
         Debug.Log(diffMod);
     }
 
-    public void CheckpointSet()
+    public void CheckpointSet() //sets variable for checkpoints on load
     {
         checkpointChecker = PlayerPrefs.GetInt("Checkpoint");
     }
-    public void Win()
+    public void Win() // sends player to win screen
     {
 
         SceneManager.LoadScene("WinScene");

@@ -9,10 +9,10 @@ public class SpawnerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnLizard", 5, 5);
+        InvokeRepeating("SpawnLizard", 5, 5); //starts spawning lizards
     }
 
-    void SpawnLizard()
+    void SpawnLizard() // spawns the lizards
     {
         Instantiate(lizard, transform.position, Quaternion.Euler(0, 180, 0));
     }

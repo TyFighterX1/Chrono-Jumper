@@ -67,13 +67,13 @@ public class PlayerController : MonoBehaviour
    
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(onGround.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(onGround.position, 0.2f, groundLayer); //checks if the player is on the ground
     }
     public void Die()  //for whenever the player loses
     {
         gm.OnDeath();
-        Instantiate(failFX, playerpos.position, Quaternion.Euler(0, 180, 0));
-        Destroy(gameObject);
+        Instantiate(failFX, playerpos.position, Quaternion.Euler(0, 180, 0)); //makes the effect n death
+        Destroy(gameObject); //removes the player GameObject
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
