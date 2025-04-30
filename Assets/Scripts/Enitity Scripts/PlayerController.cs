@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public Transform playerpos;
     public GameManager gm;
     public TimerManager tm;
-    public Animator anim;
 
     
     private float speed = 8f;
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         
-        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
         Debug.Log(gm.checkpointChecker);
